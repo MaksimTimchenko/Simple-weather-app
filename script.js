@@ -4,7 +4,7 @@ const root = document.querySelector('#root'),
       popupClose = document.querySelector('.popup-close');
 
 const form = document.querySelector('#form'),
-      formInput = document.querySelector('#text-input');     
+      formInput = document.querySelector('#text-input');
 
 
 
@@ -28,7 +28,7 @@ const getDataApi = async () => {
 
     const {
         current: {
-            weather_icons: weatherIcon, 
+            weather_icons: weatherIcon,
             temperature,
             weather_descriptions: weatherDescription,
             observation_time: observationTime,
@@ -38,7 +38,7 @@ const getDataApi = async () => {
 
         },
     } = data
-    
+
 
     storage = {
         ...storage,
@@ -53,13 +53,22 @@ const getDataApi = async () => {
 
     render();
 
-    
-} 
 
-const htmlComponent = () => {  
-    const {city, weatherIcon, temperature, weatherDescription, observationTime,windSpeed, humidity,cloudcover} = storage
+}
 
-    return  ` <div class="container">
+const htmlComponent = () => {
+    const {
+        city,
+        weatherIcon,
+        temperature,
+        weatherDescription,
+        observationTime,
+        windSpeed,
+        humidity,
+        cloudcover
+    } = storage
+
+    return ` <div class="container">
         <header>
             <div class="city-title" id="city">${city}</div>
         </header>
@@ -94,7 +103,8 @@ const htmlComponent = () => {
         </main>
       </div>
     </div>
-`}
+`
+}
 const toggleClass = () => {
     popup.classList.toggle("active")
 }
