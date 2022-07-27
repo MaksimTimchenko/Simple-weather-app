@@ -1,4 +1,5 @@
 const root = document.querySelector('#root'),
+    
       city = document.querySelector('#city'),
       popup = document.querySelector('#popup'),
       popupClose = document.querySelector('.popup-close');
@@ -22,6 +23,7 @@ let storage = {
 }
 
 const getDataApi = async () => {
+   try {
     const response = await fetch(`${linkApi}&query=${storage.city}`)
     const data = await response.json();
     console.log(data);
@@ -52,8 +54,12 @@ const getDataApi = async () => {
     }
 
     render();
-
-
+   } 
+   catch(err) {
+     root.innerHTML = `
+        <img class ="app-404" src="img/404_animation.gif" alt=""  />
+     `
+   }
 }
 
 const htmlComponent = () => {
@@ -136,6 +142,7 @@ const submitData = (e) => {
 
 form.addEventListener('submit', submitData)
 formInput.addEventListener('input', setInputValue)
+ 
 
 
 getDataApi()
