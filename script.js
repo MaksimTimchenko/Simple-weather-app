@@ -97,7 +97,7 @@ const htmlComponent = () => {
                 <div class="humidity element" >
                     <img  src="img/icons/humidity.png" alt="">
                     <span class="element-speed">${humidity}%</span>
-                    <span class="element-name">humidity</span>
+                    <span class="element-name">Humidity</span>
                 </div>
                 <div class="rain element" >
                     <img src="img/icons/gauge.png" alt="">
@@ -135,6 +135,8 @@ const setInputValue = (e) => {
 const submitData = (e) => {
     e.preventDefault();
     getDataApi();
+
+    
 
     toggleClass();
 }
