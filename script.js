@@ -1,5 +1,4 @@
 const root = document.querySelector('#root'),
-    
       city = document.querySelector('#city'),
       popup = document.querySelector('#popup'),
       popupClose = document.querySelector('.popup-close');
@@ -26,8 +25,6 @@ const getDataApi = async () => {
    try {
     const response = await fetch(`${linkApi}&query=${storage.city}`)
     const data = await response.json();
-    console.log(data);
-
     const {
         current: {
             weather_icons: weatherIcon,
@@ -37,7 +34,6 @@ const getDataApi = async () => {
             wind_speed: windSpeed,
             humidity,
             cloudcover
-
         },
     } = data
 
@@ -111,21 +107,21 @@ const htmlComponent = () => {
     </div>
 `
 }
-const toggleClass = () => {
+const togglePopupClass = () => {
     popup.classList.toggle("active")
 }
 
-popupClose.addEventListener('click', toggleClass)
+popupClose.addEventListener('click', togglePopupClass)
 
 const render = () => {
     root.innerHTML = htmlComponent();
 
 
     const city = document.querySelector('#city')
-    city.addEventListener('click', toggleClass)
+    city.addEventListener('click', togglePopupClass)
 };
 
-const setInputValue = (e) => {
+const setStorageData = (e) => {
     storage = {
         ...storage,
         city: e.target.value
@@ -135,15 +131,12 @@ const setInputValue = (e) => {
 const submitData = (e) => {
     e.preventDefault();
     getDataApi();
-
-    
-
     toggleClass();
 }
 
 
 form.addEventListener('submit', submitData)
-formInput.addEventListener('input', setInputValue)
+formInput.addEventListener('input', setStorageData)
  
 
 
